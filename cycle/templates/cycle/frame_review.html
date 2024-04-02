@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form method='post' class="review-form">
+    {% csrf_token %}
+    <div>
+        <label class="review-label">対象書籍</label>
+        <input value="{{ frame.title }}" class="review-control" readonly>
+    </div>
+    <div>
+        <label class="review-label">タイトル</label>
+        <input name="title" class="review-control">
+    </div>
+    <div>
+        <label class="review-label">本文</label>
+        <textarea name="text" rows="3" class="review-textarea"></textarea>
+    </div>
+    <div>
+    <label class="review-label">星の数</label>
+        <select name="rate" class="review-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div>
+        <input type="hidden" name="frame" value="{{ frame.id }}">
+    </div>
+    <button type="submit" class="review-botton">投稿する</button>
+</form>
+{% endblock content %}
