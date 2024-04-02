@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}アカウント作成{% endblock %}
+アカウント作成
+
+{% block content %}
+    <div class="forms">
+        <h1 class="sinki">アカウント作成</h1>
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            <input type="text" name="username" class="form-control" placeholder="ユーザID">
+            <input type="password" name="password1" class="form-control" placeholder="パスワード">
+            <input type="password" name="password2" class="form-control" placeholder="パスワード確認用">
+            <small class="form-warning">パスワードは8文字以上で設定してください。</small>
+            {% if form.errors %}
+                <span class="form-warning">利用できないユーザIDやパスワードの可能性があります。入力内容を再度ご確認ください。</span>
+            {% endif %}
+            <button type="submit" class="user-form-botton">アカウント作成</button>
+        </form>
+    </div>
+{% endblock content %}
