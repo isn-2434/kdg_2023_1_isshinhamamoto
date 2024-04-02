@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <div>
+        <div class="item-detail">
+            <div class="d-flex thum-rader">
+                <img src="{{ object.thumnail.url }}" class="bike-img">
+                <div class="star-review">
+                    <h4 class="star-review-h4">値段:{{ object.price_rate }}</h4>
+                    <h4 class="star-review-h4">空気抵抗:{{ object.air_rate }}</h4>
+                    <h4 class="star-review-h4">防寒性:{{ object.cold_rate }}</h4>
+                </div>
+            </div>
+            <div class="d-flex">
+                <h5 class="price">¥{{ object.price }}</h5>
+                <a href="{% url 'other' %}" class="detail">一覧へ</a>
+            </div>
+        </div>
+        <h5 class="item-detail_name">{{ object.name }}</h5>
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+  <div class="search">
+    <input type="text" placeholder="調べたい自転車名を入力してください">
+    <button type="button">検索する</button>
+  </div>
+  <div class="search">
+    <input type="text" placeholder="タグ検索">
+    <button type="button">検索する</button>
+  </div>
+  <div class="goods">
+    <div class="category">
+      <h3>シューズ</h3>
+      <div class="list">
+        {% for shoe in shoe_list %}
+        <div class="d-flex">
+          <div>
+            <div class="item">
+              <div class="d-flex thum-rader">
+                <img src="{{ shoe.thumnail.url }}" class="bike-img">
+                <div class="star-review">
+                  <h4 class="star-review-h4">値段:{{ shoe.price_rate }}</h4>
+                  <h4 class="star-review-h4">固定力:{{ shoe.kotei_rate }}</h4>
+                  <h4 class="star-review-h4">靴紐のしやすさ:{{ shoe.himo_rate }}</h4>
+                </div>
+              </div>
+              <div class="d-flex">
+                <h5 class="price">¥{{ shoe.price }}</h5>
+                <a href="{% url 'othershoe-detail' shoe.pk %}" class="detail">詳細へ</a>
+              </div>
+            </div>
+            <h5 class="item_name">{{ shoe.name }}</h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="category">
+      <h3>ウェア</h3>
+      <div class="list">
+        {% for wea in wea_list %}
+        <div class="d-flex">
+          <div>
+            <div class="item">
+              <div class="d-flex thum-rader">
+                <img src="{{ wea.thumnail.url }}" class="bike-img">
+                <div class="star-review">
+                  <h4 class="star-review-h4">値段:{{ wea.price_rate }}</h4>
+                  <h4 class="star-review-h4">空気抵抗:{{ wea.air_rate }}</h4>
+                  <h4 class="star-review-h4">防寒性:{{ wea.cold_rate }}</h4>
+                </div>
+              </div>
+              <div class="d-flex">
+                <h5 class="price">¥{{ wea.price }}</h5>
+                <a href="{% url 'otherwea-detail' wea.pk %}" class="detail">詳細へ</a>
+              </div>
+            </div>
+            <h5 class="item_name">{{ wea.name }}</h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="category">
+      <h3>パンツ</h3>
+      <div class="list">
+        {% for pantsu in pantsu_list %}
+        <div class="d-flex">
+          <div>
+            <div class="item">
+              <div class="d-flex thum-rader">
+                <img src="{{ pantsu.thumnail.url }}" class="bike-img">
+                <div class="star-review">
+                  <h4 class="star-review-h4">値段:{{ pantsu.price_rate }}</h4>
+                  <h4 class="star-review-h4">空気抵抗:{{ pantsu.air_rate }}</h4>
+                  <h4 class="star-review-h4">衝撃吸収:{{ pantsu.hait_rate }}</h4>
+                </div>
+              </div>
+              <div class="d-flex">
+                <h5 class="price">¥{{ pantsu.price }}</h5>
+                <a href="{% url 'otherpantsu-detail' pantsu.pk %}" class="detail">詳細へ</a>
+              </div>
+            </div>
+            <h5 class="item_name">{{ pantsu.name }}</h5>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</main>
+{% endblock content %}

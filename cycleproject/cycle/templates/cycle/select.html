@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if title %}
+    {% for object in object_list %}
+        <div class="select-list">
+            <img src="{{ object.thumbnail.url }}" class="select-img">
+        </div>
+        <div class="select-list1">
+            <h5 class="select-title">{{ object.title }}</h5>
+        </div>
+    {% endfor %}
+{% else %}
+    <h1>お選びいただいたものはございません</h1>
+{% endif %}
+{% endblock content %}

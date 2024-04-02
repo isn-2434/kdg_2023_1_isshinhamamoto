@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <div>
+        <div class="item-detail">
+            <div class="d-flex thum-rader">
+                <img src="{{ object.thumnail.url }}" class="bike-img">
+                <div class="star-review">
+                    <h4 class="star-review-h4">値段:{{ object.price_rate }}</h4>
+                    <h4 class="star-review-h4">幅:{{ object.haba_rate }}</h4>
+                    <h4 class="star-review-h4">ドロップ:{{ object.drop_rate }}</h4>
+                  </div>
+            </div>
+            <div class="d-flex">
+                <h5 class="price">¥{{ object.price }}</h5>
+                <div class="d-flex list-review">
+                    <a href="{% url 'hundle-review' object.pk %}" class="detail">レビューへ</a>
+                    <a href="{% url 'hundle' %}" class="detail">一覧へ</a>
+                </div>
+            </div>
+        </div>
+        <h5 class="item-detail_name">{{ object.name }}</h5>
+        <div class="detailreview">
+            <h2 style="font-size: 25px;">レビュー</h2>
+            {% for review in object.hundlereview_set.all %}
+                <div class="detailreview-item">
+                    <h3 class="detailreview-title">{{ review.title }}</h3>
+                    <div class="detailreview-text">
+                        <span style="font-size: 12px;">(投稿ユーザー: {{ review.user.username }})</span>
+                        <h6 style="font-size: 12px;">評価:{{ review.rate }}点</h6>
+                        <p style="font-size: 15px;">{{ review.text }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock content %}
